@@ -1,0 +1,196 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.calculator-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 450px; /* Limite a largura máxima */
+    width: 100%; /* Garante que ocupe a largura disponível */
+    box-sizing: border-box; /* Inclui padding e borda no tamanho total */
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: #4a4a4a;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+.mathematician-image { /* Renomeei a classe para ser mais genérica */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 30px;
+    border: 5px solid #ffcc00;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.input-section, .result-section {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #555;
+}
+
+input[type="text"] {
+    width: calc(100% - 20px); /* Ajusta para padding */
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Ocupa a largura total */
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.disclaimer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Estilos para a tela de carregamento */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease;
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #007bff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1.5s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loading-screen p {
+    font-size: 1.3em;
+    color: #555;
+}
+
+/* Estilo para o resultado "secreto" */
+.hidden-result {
+    font-size: 0.1em; /* Tamanho da fonte ridiculamente pequeno */
+    color: transparent; /* Cor transparente */
+    text-shadow: 0 0 0px #f0f2f5; /* Sombra para dar um "hint" leve, mas difícil de ver */
+    user-select: none; /* Impede a seleção fácil */
+    position: absolute; /* Posição absoluta para esconder ainda mais */
+    bottom: 5px; /* Quase fora da tela */
+    right: 5px; /* Quase fora da tela */
+    opacity: 0.01; /* Quase invisível */
+    pointer-events: none; /* Impede cliques */
+    transition: all 0.5s ease;
+}
+
+#reveal-button {
+    opacity: 0.6;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+#reveal-button:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+#reveal-button:active {
+    transform: scale(1.0);
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 600px) {
+    .calculator-container {
+        padding: 20px;
+        margin: 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .mathematician-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    input[type="text"], button {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    #loading-screen p {
+        font-size: 1.1em;
+    }
+}

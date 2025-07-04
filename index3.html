@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora dos Gênios</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <p>Estamos pensando...</p>
+    </div>
+
+    <div class="calculator-container">
+        <h1>A Calculadora que não falha</h1>
+        <img src="" alt="Grande Matemático" class="mathematician-image" id="mathematician-image">
+        
+        <div class="input-section">
+            <label for="expression">Sua Equação:</label>
+            <input type="text" id="expression" placeholder="Ex: 10 + 5 * 2">
+            <button onclick="calculate()">Calcular a verdade</button>
+        </div>
+
+        <div class="result-section">
+            <label for="result"> A RESPOSTA:</label>
+            <input type="text" id="result" readonly>
+        </div>
+
+        <div class="disclaimer">
+            <p>Os resultados são pura genialidade aleatória! 😉</p>
+            <div id="true-result" class="hidden-result"></div>
+            <button id="reveal-button" style="font-size: 1.2em; cursor: pointer; background: none; border: none; margin-top: 10px;">🤫</button>
+            <p id="reveal-text" style="font-size: 0.9em; color: #555; margin-top: 5px;">Clique no emoji para revelar a verdade!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
